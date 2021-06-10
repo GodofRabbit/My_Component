@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" 
+           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>组件库</title>
+    <link rel="stylesheet" href="./index.css"/> 
+</head>
+<body>
+
+	<!-- 日历组件 -->
+	<div id="calendar"><span id="date"></span></div>
+
+	<br>
+	<br>
+	<br>
+
+	<!-- 下一步按钮 -->
+	<div class="next-step">下一步</div>
+
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+	<script type="text/javascript" src="./index.js"></script>
+	<script type="text/javascript">
+		$.fn.mdater('#calendar');
+		$('.next-step').on('click', function(){
+			var date = $('#date').text();	// 这里是选择后的日期
+			console.log(date)
+		})
+		
+	</script>
+</body>
+</html>

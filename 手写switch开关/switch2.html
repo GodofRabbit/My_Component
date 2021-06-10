@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>switch开关实现</title>
+	<style type="text/css">
+		.switch {
+			width: 57px;
+	        height: 28px;
+	        position: relative;
+	        border: 1px solid #dfdfdf;
+	        background-color: #DCDFE6;
+	        box-shadow: #dfdfdf 0 0 0 0 inset;
+	        border-radius: 20px;
+	        background-clip: content-box;
+	        display: inline-block;
+	        appearance: none;
+	        -webkit-appearance: none;
+	        -moz-appearance: none;
+	        user-select: none;
+	        outline: none;
+		}
+		.switch::before {
+			content: '';
+			position: absolute;
+			width: 22px;
+	        height: 22px;
+	        background-color: #FFFFFF;
+	        border-radius: 50%;
+	        top: 0;
+	        bottom: 0;
+	        margin: auto;
+		}
+		.switch_uncheck::before {
+	        left: 2px;
+	        transition: .3s;
+		}
+		.switch_check {
+			background-color: #409EFF;
+			transition: .6s;
+		}
+		.switch_check::before {
+			left: 30px;
+			transition: .3s;
+		}
+	</style>
+</head>
+<body>
+	<input type="checkbox" class="switch switch_uncheck" onclick="clickHandle(event)" />
+	<script type="text/javascript">
+		// 定义switch开关的初始状态，默认关闭
+		let status = false 
+		function clickHandle(event) {
+			let switchs = document.querySelector('.switch')
+			setTimeout(() => {
+				// TODO 这里进行请求操作，成功时改变status，失败时不改变
+				status = !status
+				if (status) {
+					switchs.classList.add('switch_check')
+					switchs.classList.remove('switch_uncheck')
+				} else {
+					switchs.classList.remove('switch_check')
+					switchs.classList.add('switch_uncheck')
+				}
+			}, 1000)
+		}
+	</script>
+</body>
+</html>

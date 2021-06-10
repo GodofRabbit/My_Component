@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>grid布局</title>
+	<style type="text/css">
+		.main {
+			width: 600px;
+			height: 400px;
+			margin: auto;
+			background-color: #FFFFFF;
+			box-shadow: 0 5px 5px #EBEEF5;
+			border: 1px solid #DCDFE6;
+			border-radius: 10px;
+			list-style: none;
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+  			grid-template-rows: repeat(9, 1fr);
+  			padding: 0;
+		}
+		li {
+			padding: 10px 15px;
+			box-sizing: border-box;
+			border: 1px solid #F2F6FC;
+			border-top: none;
+			border-left: 0;
+			height: 100%;
+			display: flex;
+    		align-items: center;
+		}
+		.item-1 {
+			grid-column-start: 1;
+  			grid-column-end: 7;
+		}
+
+		.item-2 {
+			grid-row-start: 2;
+  			grid-row-end: 4;
+		}
+		.item-3 {
+			grid-column-start: 2;
+  			grid-column-end: 4;
+		}
+		.item-4 {
+			grid-column-start: 5;
+  			grid-column-end: 7;
+		}
+
+		.item-5 {
+			grid-row-start: 4;
+  			grid-row-end: 6;
+		}
+
+		.item-6 {
+			grid-row-start: 6;
+  			grid-row-end: 8;
+		}
+		.item-7 {
+			grid-column-start: 2;
+  			grid-column-end: 7;
+		}
+
+		.item-8 {
+			grid-row-start: 8;
+  			grid-row-end: 10;
+		}
+
+		.circle {
+			display: inline-block;
+			border-radius: 30px;
+			padding: 2px 5px;
+			background-color: blue;
+			color: #FFFFFF;
+			font-size: 12px;
+			/*transform: scale(.8);*/
+			position: relative;
+		}
+		.circle::before {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: -5px;
+			left: 1px;
+			border: 5px solid;
+			border-color: transparent transparent transparent blue;
+			transform: skew(-30deg);
+		}
+	</style>
+</head>
+<body>
+	<ul class="main">
+		<li class="item-1">工单流水号</li>
+
+		<li class="item-2">整体工单处理时长</li>
+		<li class="item-2 item-3">1小时25分<div class="circle">协办</div></li>
+		<li class="item-2">EOMS处理是否超时</li>
+		<li class="item-2 item-4">1小时25分</li>
+
+		<li class="item-5">整体工单处理时长</li>
+		<li class="item-5 item-3">1小时25分</li>
+		<li class="item-5">EOMS处理是否超时</li>
+		<li class="item-5 item-4">1小时25分</li>
+
+		<li class="item-6">投诉节点</li>
+		<li class="item-6 item-7">投诉节点所得到的多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多</li>
+
+		<li class="item-8">投诉节点</li>
+		<li class="item-8 item-7">投诉节点所得到的多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多</li>
+		
+	</ul>
+</body>
+</html>

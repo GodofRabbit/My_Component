@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>水波纹效果</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			position: relative;
+			background-color: rgb(118, 218, 255);
+			overflow: hidden;
+		}
+		body::before, body::after {
+			content: '';
+			position: absolute;
+			bottom: 15vh;
+			min-width: 300vw;
+			min-height: 300vw;
+			background-color: #FFFFFF;
+			animation: rote 10s linear infinite;
+		}
+		body::before {
+			left: -95%;
+			border-radius: 45%;
+			opacity: .5;
+		}
+		body::after {
+			left: -95%;
+			border-radius: 46%;
+		}
+		@keyframes rote {
+			from {
+				transform: rotateZ(0);
+			}
+			to {
+				transform: rotateZ(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+
+</body>
+</html>

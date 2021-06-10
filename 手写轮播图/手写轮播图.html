@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>手写轮播图</title>
+	<style type="text/css">
+		body {
+			text-align: center;
+		}
+		.wrap {
+			width: 400px;
+			border: 1px solid #eeeeee;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.loop {
+			display: flex;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.loop li img {
+			width: 400px;
+			height: 300px;
+			vertical-align: bottom;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="loop">
+			<li><img src="./banner1.jpg" /></li>
+			<li><img src="./banner2.jpg" /></li>
+			<li><img src="./banner3.jpg" /></li>
+		</ul>
+	</div>
+	<button onclick="prev()">上一张</button>
+	<button onclick="next()">下一张</button>
+	<script type="text/javascript">
+		{
+			// 在前后各加一张图，目的是为了能无缝滑动
+			const loop = document.querySelector('.loop')
+			const li = document.querySelectorAll('.loop li')
+			loop.insertBefore(li[li.length -1].cloneNode(true), li[0])
+			loop.appendChild(li[0].cloneNode(true))
+			loop.style.transform = 'translateX(-400px)'
+			// 定义一些变量
+			let now = 1 //当前在哪一张
+			let timer = null // 定时器
+
+			function prev() {
+				if(!timer) { // 作节流处理
+					loop.style.transition = '.3s';
+					loop.style.transform = `translateX(-${--now * 400}px)`
+					timer = setTimeout(() => {
+						if (!now) {
+							now = li.length
+							loop.style.transition = 'none';
+							loop.style.transform = `translateX(-${now * 400}px)`
+						}
+						timer = null
+					}, 300)
+				}
+			}
+			function next() {
+				if(!timer) { // 节流处理
+					loop.style.transition = '.3s';
+					loop.style.transform = `translateX(-${++now * 400}px)`
+					timer = setTimeout(() => {
+						if (now > li.length) {
+							now = 1
+							loop.style.transition = 'none';
+							loop.style.transform = `translateX(-${now * 400}px)`
+						}
+						timer = null
+					}, 300)
+				}
+			}
+			// 自动轮播
+			setInterval(next, 2000)
+		}
+	</script>
+</body>
+</html>
